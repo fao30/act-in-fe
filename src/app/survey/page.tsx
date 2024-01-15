@@ -75,12 +75,9 @@ export default function SurveyPage() {
                       return setSkills(skills.filter((s) => s !== e));
                     }}
                     type="button"
-                    className={cn(
-                      "shadow w-fit font-bold text-white bg-tango rounded-full text-center px-8 py-2 border-3 border-barley",
-                      {
-                        "border-sand": active,
-                      },
-                    )}
+                    className={cn("w-fit font-bold text-white bg-tango rounded-full text-center px-8 py-2 border-3 border-barley", {
+                      "border-sand shadow-lg": active,
+                    })}
                     key={e}
                   >
                     {e}
