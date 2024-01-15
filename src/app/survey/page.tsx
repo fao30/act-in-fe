@@ -15,7 +15,7 @@ export default function SurveyPage() {
     QUESTIONS.map((question) => {
       return (
         <section key={question.question} className="flex flex-col h-full gap-10">
-          <h5>{question.question}</h5>
+          <h6>{question.question}</h6>
           <section className="grid grid-cols-4 gap-6">
             {question.answers.map((e) => (
               <button
@@ -30,7 +30,7 @@ export default function SurveyPage() {
                   setAnswers(updatedAnswers);
                 }}
                 key={e}
-                className="h-48 px-6 flex items-center justify-center text-white text-2xl rounded-3xl bg-tango border-2 border-apricot"
+                className="h-44 px-6 flex items-center justify-center text-white text-xl rounded-3xl bg-tango border-2 border-apricot"
               >
                 <p className="font-bold text-balance text-center">{e}</p>
               </button>
@@ -46,14 +46,14 @@ export default function SurveyPage() {
       <h4 className="text-sand font-black pl-6">Прохождение опроса</h4>
       <section className="p-12 h-[80dvh] rounded-2xl bg-white border-2 border-wild flex flex-col gap-12">
         <section className="flex items-center justify-center">
-          <p className="text-2xl">
+          <h6>
             {isLastStep
               ? "Выбери все навыки, которыми ты владеешь. Не скромничай и смело выбирай свои сильные стороны!"
               : QUESTIONS.at(currentStepIndex)!.title}
-          </p>
+          </h6>
         </section>
-        <section className="w-full pl-12 pr-20 py-12 bg-wild rounded-full grid grid-cols-6 items-end">
-          <h5 className="text-black">{isLastIndex ? "Почти готово!" : `${currentStepIndex + 1} / ${QUESTIONS.length}`}</h5>
+        <section className="w-full pl-10 pr-16 py-10 bg-wild rounded-full grid grid-cols-6 items-end">
+          <h6 className="text-black">{isLastIndex ? "Почти готово!" : `${currentStepIndex + 1} / ${QUESTIONS.length}`}</h6>
           <section className="col-span-5 relative">
             <section
               style={{ width: isFirstStep ? "2%" : isLastIndex ? "100%" : (100 / QUESTIONS.length) * currentStepIndex + "%" }}
@@ -67,7 +67,7 @@ export default function SurveyPage() {
         </section>
         {isLastIndex ? (
           <section className="flex flex-col gap-12 items-center justify-center">
-            <section className="flex justify-center gap-4 flex-wrap">
+            <section className="flex justify-center gap-2 flex-wrap">
               {SKILLS.map((e) => {
                 const active = skills.includes(e);
                 return (
