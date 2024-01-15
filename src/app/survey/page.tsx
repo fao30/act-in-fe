@@ -21,8 +21,10 @@ export default function SurveyPage() {
               <button
                 type="button"
                 onClick={() => {
-                  if (isLastStep) return setIsLastIndex(true);
-                  handleNext();
+                  if (isLastStep) {
+                    setIsLastIndex(true);
+                  } else handleNext();
+
                   const updatedAnswers = structuredClone(answers);
                   if (!updatedAnswers.includes(e)) updatedAnswers.push(e);
                   setAnswers(updatedAnswers);
