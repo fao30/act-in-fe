@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-barley text-lg text-donkey font-medium lg:sticky bottom-0 w-full flex md:flex-row flex-col justify-center items-center gap-2 md:gap-12 pb-shorter px-shorter">
+    <footer className="bg-barley text-lg text-donkey font-medium lg:sticky bottom-0 w-full flex lg:flex-row flex-col justify-center items-center gap-2 md:gap-12 p-shorter lg:py-4">
       <p>ACT IN</p>
       <p>Мечты становятся реальностью!</p>
       <section className="flex gap-2 items-center">

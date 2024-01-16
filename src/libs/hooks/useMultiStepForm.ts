@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export function useMultiStepForm(steps: React.JSX.Element[]) {
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [currentStepIndex, setCurrentStepIndex] = useLocalStorage<number>("currentStepIndex", 0);
 
   const handleNext = () => {
     setCurrentStepIndex((i) => {
