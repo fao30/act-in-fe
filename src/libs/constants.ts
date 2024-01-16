@@ -3,7 +3,7 @@ export const ICONS = {
   call: "material-symbols:call",
 };
 
-export type Answer = "BA" | "M" | "BOTH";
+export type Answer = "BA" | "M";
 
 export const SKILLS: { label: string; value: Answer }[] = [
   { label: "креативность", value: "M" },
@@ -19,7 +19,7 @@ export const SKILLS: { label: string; value: Answer }[] = [
   { label: "законодательство", value: "M" },
   { label: "Python", value: "BA" },
   { label: "анализ данных", value: "BA" },
-  { label: "Excel", value: "BOTH" },
+  { label: "Excel", value: "BA" },
   { label: "большие данные", value: "BA" },
   { label: "проведение опроса", value: "M" },
   { label: "PowerPoint", value: "M" },
@@ -124,7 +124,7 @@ export const QUESTIONS: { title: string; question: string; answers: { label: str
 ];
 
 export const calculateCounts = ({ answers, skills }: { answers: string[]; skills: string[] }): Record<Answer, number> => {
-  const initialCounts: Record<Answer, number> = { BA: 0, M: 0, BOTH: 0 };
+  const initialCounts: Record<Answer, number> = { BA: 0, M: 0 };
 
   const countSkill = skills.reduce(
     (counts, skill) => {
@@ -146,17 +146,7 @@ export const calculateCounts = ({ answers, skills }: { answers: string[]; skills
     { ...initialCounts },
   );
 
-  const totalCounts: Record<Answer, number> = {
-    BA: countSkill.BA + countAnswer.BA,
-    M: countSkill.M + countAnswer.M,
-    BOTH: countSkill.BOTH + countAnswer.BOTH,
-  };
-
-  if (totalCounts.BOTH > 0) {
-    totalCounts.BA += totalCounts.BOTH;
-    totalCounts.M += totalCounts.BOTH;
-    totalCounts.BOTH = 0;
-  }
+  const totalCounts: Record<Answer, number> = { BA: countSkill.BA + countAnswer.BA, M: countSkill.M + countAnswer.M };
 
   const roundedCounts: Record<Answer, number> = totalCounts;
   for (const key in totalCounts) {
