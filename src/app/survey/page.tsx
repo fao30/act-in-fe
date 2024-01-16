@@ -1,12 +1,14 @@
 "use client";
 
-import { QUESTIONS, SKILLS } from "@/libs/constants";
+import { calculateCounts, QUESTIONS, SKILLS } from "@/libs/constants";
 import { cn } from "@/libs/functions";
 import { useMultiStepForm } from "@/libs/hooks/useMultiStepForm";
+import { useToast } from "@chakra-ui/react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { useState } from "react";
 
 export default function SurveyPage() {
+  const toast = useToast();
   const [answers, setAnswers] = useState<string[]>([]);
   const [skills, setSkills] = useState<string[]>([]);
   const [isLastIndex, setIsLastIndex] = useState(false);
@@ -26,13 +28,13 @@ export default function SurveyPage() {
                   } else handleNext();
 
                   const updatedAnswers = structuredClone(answers);
-                  if (!updatedAnswers.includes(e)) updatedAnswers.push(e);
+                  if (!updatedAnswers.includes(e.label)) updatedAnswers.push(e.label);
                   setAnswers(updatedAnswers);
                 }}
-                key={e}
+                key={e.label}
                 className="h-44 px-6 flex items-center justify-center text-white text-xl rounded-3xl bg-tango border-2 border-apricot"
               >
-                <p className="font-bold text-balance text-center">{e}</p>
+                <p className="font-bold text-balance text-center">{e.label}</p>
               </button>
             ))}
           </section>
@@ -69,20 +71,23 @@ export default function SurveyPage() {
           <section className="flex flex-col gap-12 items-center justify-center">
             <section className="flex justify-center gap-2 flex-wrap">
               {SKILLS.map((e) => {
-                const active = skills.includes(e);
+                const active = skills.includes(e.label);
                 return (
                   <button
                     onClick={() => {
-                      if (!active) return setSkills([...skills, e]);
-                      return setSkills(skills.filter((s) => s !== e));
+                      if (active) return setSkills(skills.filter((s) => s !== e.label));
+                      if (!active) {
+                        if (skills.length === 5) return toast({ status: "error", title: "Можно выбрать маскимум 5 навыков" });
+                        return setSkills([...skills, e.label]);
+                      }
                     }}
                     type="button"
                     className={cn("w-fit font-bold text-white bg-tango rounded-full text-center px-8 py-2 border-3 border-barley", {
                       "border-sand shadow-lg": active,
                     })}
-                    key={e}
+                    key={e.label}
                   >
-                    {e}
+                    {e.label}
                   </button>
                 );
               })}
@@ -91,16 +96,8 @@ export default function SurveyPage() {
               className="shadow rounded-3xl bg-white border-3 border-tango font-bold text-sand px-6 py-2 w-fit text-lg"
               type="button"
               onClick={() => {
-                alert(
-                  JSON.stringify({
-                    answers,
-                    skills,
-                  }),
-                );
-                console.log({
-                  answers,
-                  skills,
-                });
+                if (!skills.length) return toast({ status: "warning", title: "Выбери 1 до 5 навыков!" });
+                console.log(calculateCounts({ answers, skills }));
               }}
             >
               Узнать свои результаты
