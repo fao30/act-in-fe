@@ -17,6 +17,10 @@ export type EducationalProgram = {
   about: string;
   programTitle: string;
   programs: string[];
+  programWebsite: string;
+  presentationWebsite: string;
+  educationalCreditTitle: string;
+  educationalCreditWebsite: string;
   information: {
     common: string[];
     entranceTest: string;
@@ -30,6 +34,7 @@ export type EducationalProgram = {
 };
 
 export type Result = {
+  educationalProgramHref: string;
   title: string;
   description: string;
   skills: string[];
@@ -49,6 +54,12 @@ export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
       "Business Intelligence - data analysis and reporting в Политехническом институте Канады;",
       "MBE Business Intelligence в Берлинском университете им. Штайнбайса.",
     ],
+    educationalCreditTitle: "Образовательный кредит от Сбера под 3%",
+    educationalCreditWebsite:
+      "https://www.sberbank.com/ru/person/credits/money/credit_na_obrazovanie_a?utm_source=postupi_online_specpro&utm_medium=sberkredit&utm_campaign=specpro",
+    programWebsite:
+      "https://kpfu.ru/institutes/institut-upravleniya-ekonomiki-i-finansov/struktura/otdelenie-menedzhmenta/kafedra-innovacij-i-investicij",
+    presentationWebsite: "https://kpfu.ru/portal/docs/F_57925047/BA_bak_16.02.2022._final_.pdf",
     information: {
       common: ["Государственный ВУЗ", "Есть общежитие", "Бюджетные места"],
       entranceTest: "ЕГЭ: русский, профильная математика, обществознание",
@@ -74,6 +85,12 @@ export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
       "организовывать рекламу и мероприятия по стимулированию сбыта;",
       "проводить ценовую политику.",
     ],
+    programWebsite:
+      "https://kpfu.ru/institutes/institut-upravleniya-ekonomiki-i-finansov/struktura/otdelenie-menedzhmenta/kafedra-marketinga",
+    presentationWebsite: "https://kpfu.ru/portal/docs/F_1915942414/Marketing.pdf",
+    educationalCreditWebsite:
+      "https://www.sberbank.com/ru/person/credits/money/credit_na_obrazovanie_a?utm_source=postupi_online_specpro&utm_medium=sberkredit&utm_campaign=specpro",
+    educationalCreditTitle: "Образовательный кредит от Сбера под 3%",
     information: {
       common: ["Государственный ВУЗ", "Есть общежитие", "Бюджетные места"],
       entranceTest: "ЕГЭ: русский, профильная математика, обществознание",
@@ -89,6 +106,7 @@ export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
 
 export const RESULTS: Record<Answer, Result> = {
   M: {
+    educationalProgramHref: "/result/business-analytics/educational-program",
     title: "Маркетинг",
     description:
       "Какие крупные и известные компании ты знаешь? Удивительно, но многие из них стали таковыми благодаря грамотному маркетингу! Ты можешь узнать как понимать клиентов, как с ними правильно взаимодействовать и строить маркетинговые стратегии на образовательной программе, которую мы подобрали специально для тебя",
@@ -106,6 +124,7 @@ export const RESULTS: Record<Answer, Result> = {
     ],
   },
   BA: {
+    educationalProgramHref: "/result/marketing/educational-program",
     title: "Бизнес-аналитика",
     description:
       "Какие крупные и известные компании ты знаешь? Ни одна крупная компания не обходится без бизнес-аналитика в своем штате. Бизнес-аналитики нужны практически в любой отрасли: банки, фармацевтика, IT, энергетика. Задача бизнес-аналитика — изучить, как и чем живет компания, и посоветовать, как решить ее проблемы",

@@ -101,7 +101,7 @@ export default function SurveyPage() {
                 })}
               </section>
               <button
-                className="shadow rounded-3xl bg-white border-3 border-tango font-bold text-sand px-6 py-2 w-fit text-lg"
+                className="btn"
                 type="button"
                 onClick={() => {
                   if (!skills.length) return toast({ status: "warning", title: "Выбери 1 до 5 навыков!" });

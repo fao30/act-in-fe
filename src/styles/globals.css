@@ -37,6 +37,9 @@
 }
 
 @layer components {
+  .btn {
+    @apply shadow-lg rounded-3xl bg-white border-3 border-tango text-sand px-6 py-1 w-fit md:text-lg font-black;
+  }
   .main-create-padding {
     @apply flex flex-col gap-6 md:gap-12 items-center justify-center py-shorter xl:px-36 2xl:px-[28rem];
   }
