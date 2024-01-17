@@ -1,3 +1,6 @@
+import { RESULTS } from "@/libs/constants";
+import ResultBody from "../_components/ResultBody";
+
 export default function Marketing() {
-  return <div>Marketing</div>;
+  return <ResultBody data={RESULTS.M} />;
 }
