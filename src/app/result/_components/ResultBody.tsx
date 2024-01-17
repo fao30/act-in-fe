@@ -2,6 +2,7 @@
 
 import { type Answer, type Result } from "@/libs/constants";
 import { getDominantResult } from "@/libs/functions";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import experiencedSalary from "#/assets/icons/experiencedSalary.png";
 import monthlySalary from "#/assets/icons/monthlySalary.png";
 import strongSide from "#/assets/icons/strongSide.png";
@@ -9,10 +10,12 @@ import logo from "#/assets/logo.svg";
 import { type StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
 type Props = { data: Result };
 export default function ResultBody({ data }: Props) {
+  const router = useRouter();
   const [result, setResult] = useState<Record<Answer, number> | null>(null);
 
   useEffect(() => {
@@ -27,7 +30,22 @@ export default function ResultBody({ data }: Props) {
   return (
     <Fragment>
       <article className="p-shorter bg-barley flex flex-col gap-4 lg:gap-6">
-        <h4 className="text-sand font-black pl-6">Результаты опроса</h4>
+        <section className="flex justify-between gap-4 items-center">
+          <h4 className="text-sand font-black pl-6">Результаты опроса</h4>
+          <button
+            className="flex gap-1 items-center"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                localStorage.clear();
+                router.push("/survey");
+              }
+            }}
+            type="button"
+          >
+            <h5 className="text-sand font-black">Пройти тест заново</h5>
+            <Icon icon="mi:undo" width={35} />
+          </button>
+        </section>
         <section className="px-4 xl:px-10 min-h-[80dvh] rounded-2xl bg-white border-2 border-wild flex flex-col divide-y-2 divide-wafer divide-dashed items-center">
           <section className="p-4 lg:p-10 w-full flex flex-wrap gap-4 justify-between items-center">
             <section className="flex gap-6 items-center">
