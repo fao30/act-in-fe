@@ -13,6 +13,8 @@ export default {
         donkey: "#A68E74",
         sand: "#806C61",
         wild: "#F5F5F5",
+        wafer: "#E0D6CD",
+        seagreen: "#29795D",
       },
       padding: {
         shorter4: "1vw",

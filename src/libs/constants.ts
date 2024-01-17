@@ -5,6 +5,125 @@ export const ICONS = {
 
 export type Answer = "BA" | "M";
 
+export const RESULT_REDIRECT: Record<Answer, string> = {
+  BA: "/result/business-analytics",
+  M: "/result/marketing",
+};
+
+export type EducationalProgram = {
+  title: string;
+  major: string;
+  universityName: string;
+  about: string;
+  programTitle: string;
+  programs: string[];
+  information: {
+    common: string[];
+    entranceTest: string;
+    educationForm: string;
+    educationDuration: string;
+    educationTuition: string;
+    passingScorePaid: number;
+    budgetQuota: number;
+    passingScoreBudget: number;
+  };
+};
+
+export type Result = {
+  title: string;
+  description: string;
+  skills: string[];
+  additional: { monthlySalary: string; experiencedSalary: string; strongSide: string };
+};
+
+export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
+  BA: {
+    title: "Бизнес-аналитика в управленческой деятельности",
+    major: "38.03.02 “Менеджмент”",
+    universityName: "Казанский (Приволжский) Федеральный университет",
+    about:
+      "Программа готовит высококвалифицированных бизнес-аналитиков в области делового анализа и информационно-аналитической поддержки принятия оперативных, тактических и стратегических управленческих решений компании.",
+    programTitle: "Программа сочетает преимущества аналогичных зарубежных программ подготовки, включая:",
+    programs: [
+      "Business Intelligence в Национальном университете Сингапура;",
+      "Business Intelligence - data analysis and reporting в Политехническом институте Канады;",
+      "MBE Business Intelligence в Берлинском университете им. Штайнбайса.",
+    ],
+    information: {
+      common: ["Государственный ВУЗ", "Есть общежитие", "Бюджетные места"],
+      entranceTest: "ЕГЭ: русский, профильная математика, обществознание",
+      educationForm: "очная (дневная)",
+      educationDuration: "4 года",
+      educationTuition: "170.000 рублей",
+      passingScorePaid: 125,
+      budgetQuota: 20,
+      passingScoreBudget: 265,
+    },
+  },
+  M: {
+    title: "Маркетинг",
+    major: "38.03.02 “Менеджмент”",
+    universityName: "Казанский (Приволжский) Федеральный университет",
+    about:
+      "Используя в управлении современную концепцию маркетинга, компании  стремятся строить свою деятельность в соответствии с ее ключевым принципом: производить то, что продается, а не продавать то, что производится.",
+    programTitle: "Систематический и научно-организованный маркетинг позволяет компаниям:",
+    programs: [
+      "тщательно и всесторонне изучать рынок;",
+      "формировать и активно воздействовать на спрос;",
+      "рационально и эффективно планировать товарный ассортимент;",
+      "организовывать рекламу и мероприятия по стимулированию сбыта;",
+      "проводить ценовую политику.",
+    ],
+    information: {
+      common: ["Государственный ВУЗ", "Есть общежитие", "Бюджетные места"],
+      entranceTest: "ЕГЭ: русский, профильная математика, обществознание",
+      educationForm: "очная (дневная)",
+      educationDuration: "4 года",
+      educationTuition: "170.000 рублей",
+      passingScorePaid: 125,
+      budgetQuota: 20,
+      passingScoreBudget: 265,
+    },
+  },
+};
+
+export const RESULTS: Record<Answer, Result> = {
+  M: {
+    title: "Маркетинг",
+    description:
+      "Какие крупные и известные компании ты знаешь? Удивительно, но многие из них стали таковыми благодаря грамотному маркетингу! Ты можешь узнать как понимать клиентов, как с ними правильно взаимодействовать и строить маркетинговые стратегии на образовательной программе, которую мы подобрали специально для тебя",
+    additional: { monthlySalary: "40", experiencedSalary: "180", strongSide: "3" },
+    skills: [
+      "маркетинг",
+      "СММ",
+      "аналитическое мышление",
+      "генерация идей",
+      "креативность",
+      "развитие бренда",
+      "маркетинговый анализ",
+      "копирайтинг",
+      "проведение промо-акций",
+    ],
+  },
+  BA: {
+    title: "Бизнес-аналитика",
+    description:
+      "Какие крупные и известные компании ты знаешь? Ни одна крупная компания не обходится без бизнес-аналитика в своем штате. Бизнес-аналитики нужны практически в любой отрасли: банки, фармацевтика, IT, энергетика. Задача бизнес-аналитика — изучить, как и чем живет компания, и посоветовать, как решить ее проблемы",
+    additional: { monthlySalary: "45", experiencedSalary: "200", strongSide: "4" },
+    skills: [
+      "работа в команде",
+      "управление проектами",
+      "Excel",
+      "PowerPoint",
+      "написание ТЗ",
+      "анализ рынка",
+      "аналитическое мышление",
+      "бизнес-процессы",
+      "SQL",
+    ],
+  },
+};
+
 export const SKILLS: { label: string; value: Answer }[] = [
   { label: "креативность", value: "M" },
   { label: "маркетинг", value: "M" },
@@ -122,36 +241,3 @@ export const QUESTIONS: { title: string; question: string; answers: { label: str
     ],
   },
 ];
-
-export const calculateCounts = ({ answers, skills }: { answers: string[]; skills: string[] }): Record<Answer, number> => {
-  const initialCounts: Record<Answer, number> = { BA: 0, M: 0 };
-
-  const countSkill = skills.reduce(
-    (counts, skill) => {
-      const matchingSkill = SKILLS.find((s) => s.label === skill);
-      if (matchingSkill) counts[matchingSkill.value] += 0.2;
-      return counts;
-    },
-    { ...initialCounts },
-  );
-
-  const countAnswer = answers.reduce(
-    (questionCounts, selectedAnswer) => {
-      QUESTIONS.forEach((question) => {
-        const matchingAnswer = question.answers.find((answer) => answer.label === selectedAnswer);
-        if (matchingAnswer) questionCounts[matchingAnswer.value] += 1;
-      });
-      return questionCounts;
-    },
-    { ...initialCounts },
-  );
-
-  const totalCounts: Record<Answer, number> = { BA: countSkill.BA + countAnswer.BA, M: countSkill.M + countAnswer.M };
-
-  const roundedCounts: Record<Answer, number> = totalCounts;
-  for (const key in totalCounts) {
-    roundedCounts[key as Answer] = parseFloat(totalCounts[key as Answer].toFixed(1));
-  }
-
-  return roundedCounts;
-};
