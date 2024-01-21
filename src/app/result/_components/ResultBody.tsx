@@ -80,7 +80,7 @@ export default function ResultBody({ data }: Props) {
             </section>
           </section>
           <section className="p-4 lg:p-10 flex flex-col gap-4">
-            <p className="md:text-lg">Навыки, необходимые маркетологу, согласно сервису HeadHunter.ru</p>
+            <p className="md:text-lg">{data.skillTitle}</p>
             <section className="flex justify-center gap-2 flex-wrap">
               {data.skills.map((skill) => {
                 return (
