@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 import { TRPCReactProvider } from "@/trpc/react";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider } from "antd";
 import { Manrope } from "next/font/google";
 import { cookies } from "next/headers";
 import Footer from "./_components/Footer";
@@ -21,8 +23,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ru">
       <body className={`font-manrope ${manrope.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
-          <main>{children}</main>
-          <Footer />
+          <AntdRegistry>
+            <ConfigProvider
+              theme={{
+                token: { fontFamily: "var(--font-manrope)" },
+                components: {
+                  Select: {
+                    optionSelectedBg: "#FFF0CE",
+                    fontSize: 16,
+                    colorBorder: "#F17628",
+                    controlHeight: 40,
+                    borderRadius: 16,
+                    colorBgContainer: "#F5F5F5",
+                  },
+                },
+              }}
+            >
+              <main>{children}</main>
+              <Footer />
+            </ConfigProvider>
+          </AntdRegistry>
         </TRPCReactProvider>
       </body>
     </html>

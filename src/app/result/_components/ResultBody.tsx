@@ -1,6 +1,6 @@
 "use client";
 
-import { type Answer, type Result } from "@/libs/constants";
+import { RESULT_REDIRECT, type Answer, type Result } from "@/libs/constants";
 import { getDominantResult } from "@/libs/functions";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import experiencedSalary from "#/assets/icons/experiencedSalary.png";
@@ -94,9 +94,11 @@ export default function ResultBody({ data }: Props) {
               })}
             </section>
             <section className="flex justify-end">
-              <Link href="" className="btn">
-                Посмотреть реальные вакансии
-              </Link>
+              {result ? (
+                <Link href={`${RESULT_REDIRECT[getDominantResult(result)]}/vacancy`} className="btn">
+                  Посмотреть реальные вакансии
+                </Link>
+              ) : null}
             </section>
           </section>
         </section>
