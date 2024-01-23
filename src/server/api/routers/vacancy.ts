@@ -70,7 +70,13 @@ interface Item {
   has_test: boolean;
   response_letter_required: boolean;
   area: Area;
-  salary: number | null;
+  salary: {
+    currency: string;
+    from: number | null;
+    gross: boolean;
+    to: number | null;
+  };
+
   type: Type;
   address?: Address;
 

@@ -91,3 +91,13 @@ export const getError = ({ error, url, plain, status }: { error: unknown; url: s
 };
 
 export const consoleError = (error: string) => console.error(`${timestamp.error} ${error}`);
+
+export const formatCurrency = ({ amount, currency }: { amount: number; currency: string }) => {
+  const formatter = Intl.NumberFormat(["ru-RU"], {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+  return formatter.format(amount);
+};

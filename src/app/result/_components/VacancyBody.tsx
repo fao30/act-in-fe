@@ -1,6 +1,6 @@
 "use client";
 
-import { generateSearchParams } from "@/libs/functions";
+import { formatCurrency, generateSearchParams } from "@/libs/functions";
 import { type Area } from "@/server/api/routers/region";
 import { api } from "@/trpc/react";
 import type { SearchParams } from "@/types/types";
@@ -133,6 +133,15 @@ export default function VacancyBody({ text, title, topSkills, searchParams, whom
                   <section key={e.id} className="px-6 py-3 flex flex-col gap-4 border-2 border-tango rounded-2xl">
                     <section className="flex flex-col">
                       <h6>{e.name}</h6>
+
+                      <h5>
+                        {e.salary.from
+                          ? `${!e.salary.to ? "от" : ""} ${formatCurrency({ amount: e.salary.from, currency: e.salary.currency })}`
+                          : ""}
+                        {e.salary.to
+                          ? `${e.salary.from ? " - " : " до "} ${formatCurrency({ amount: e.salary.to, currency: e.salary.currency })}`
+                          : ""}
+                      </h5>
                     </section>
                     <section className="flex gap-2 items-center">
                       <Image width={50} height={50} src={e.employer?.logo_urls?.original} alt={e?.employer?.name} />
