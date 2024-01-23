@@ -33,6 +33,7 @@ export const vacancyRouter = createTRPCRouter({
         text: z.string(),
         only_with_salary: z.coerce.boolean().default(true),
         area: z.array(z.string()).optional(),
+        currency: z.string().default("RUR"),
       }),
     )
     .query(async ({ input }) => {
