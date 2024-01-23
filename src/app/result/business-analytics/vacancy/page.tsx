@@ -19,6 +19,7 @@ const topSkills = [
 export default function BusinessAnalyticsVacancyPage({ searchParams }: Props) {
   return (
     <VacancyBody
+      path="business-analytics"
       searchParams={searchParams}
       text="Бизнес анатлитик"
       whom="бизнес-аналитику"
