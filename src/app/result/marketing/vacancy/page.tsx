@@ -17,5 +17,14 @@ const topSkills = [
 ];
 
 export default function MarketingVacancyPage({ searchParams }: Props) {
-  return <VacancyBody searchParams={searchParams} text="Маркетолог" whom="маркетологу" title="Маркетолог" topSkills={topSkills} />;
+  return (
+    <VacancyBody
+      path="marketing"
+      searchParams={searchParams}
+      text="Маркетолог"
+      whom="маркетологу"
+      title="Маркетолог"
+      topSkills={topSkills}
+    />
+  );
 }

@@ -11,9 +11,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-type Props = { text: string; title: string; topSkills: string[]; searchParams: SearchParams; whom: string };
+type Props = { text: string; title: string; topSkills: string[]; searchParams: SearchParams; whom: string; path: string };
 
-export default function VacancyBody({ text, title, topSkills, searchParams, whom }: Props) {
+export default function VacancyBody({ text, title, topSkills, searchParams, whom, path }: Props) {
   const router = useRouter();
 
   const [selectedAreas, setSelectedAreas] = useState({ region: searchParams.region ?? "", city: searchParams.city ?? "" });
@@ -116,7 +116,7 @@ export default function VacancyBody({ text, title, topSkills, searchParams, whom
                 className="w-96 text-lg"
               />
               <button
-                onClick={() => router.push(`/result/business-analytics/vacancy${generateSearchParams(selectedAreas)}`)}
+                onClick={() => router.push(`/result/${path}/vacancy${generateSearchParams(selectedAreas)}`)}
                 type="button"
                 className="btn"
               >
