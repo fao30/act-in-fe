@@ -23,7 +23,7 @@ const getUrl = (endpoint: string, params?: Params): string => {
 
 export const getData = async ({ endpoint, params, cacheType }: { endpoint: string; params?: Params; cacheType?: RequestCache }) => {
   let headers: HeadersInit | undefined = undefined;
-  headers = { Authorization: `Bearer ${env.HH_API_TOKEN}` };
+  headers = { Authorization: `Bearer ${env.HH_API_TOKEN}` };//HH
   const url = getUrl(endpoint, params);
   const res = await fetch(url, { cache: cacheType ?? "no-store", headers });
 
