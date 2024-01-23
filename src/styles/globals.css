@@ -82,3 +82,23 @@
     @apply left-1/2 -translate-x-1/2;
   }
 }
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active,
+.ant-select-open .ant-select-selector {
+  border-color: #2c2c2c !important;
+  box-shadow: none !important;
+}
+
+.ant-select-selector:hover {
+  border-color: #2c2c2c !important;
+}
+
+.ant-select-selection-search {
+  padding-left: 0.3rem !important;
+}
+
+.ant-select-selector {
+  padding-left: 1rem !important;
+}
