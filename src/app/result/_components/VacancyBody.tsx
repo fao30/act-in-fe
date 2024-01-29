@@ -1,15 +1,15 @@
 "use client";
 
 import { formatCurrency, generateSearchParams } from "@/libs/functions";
-import { type Area } from "@/server/api/routers/region";
+import type { Area } from "@/server/api/routers/region";
 import { api } from "@/trpc/react";
 import type { SearchParams } from "@/types/types";
-import suitcase from "#/assets/icons/suitcase.png";
 import { Select, Skeleton } from "antd";
 import type { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import suitcase from "#/assets/icons/suitcase.png";
 
 type Props = { text: string; title: string; topSkills: string[]; searchParams: SearchParams; whom: string; path: string };
 
@@ -128,7 +128,7 @@ export default function VacancyBody({ text, title, topSkills, searchParams, whom
             {loadingVacancies
               ? Array(6)
                   .fill(6)
-                  .map((_, i) => <Skeleton avatar key={i} active />)
+                  .map((_, i) => <Skeleton avatar key={i} active paragraph={{ rows: 5 }} />)
               : vacancies?.items.map((e) => (
                   <section key={e.id} className="px-6 py-3 flex flex-col gap-4 border-2 border-tango rounded-2xl">
                     <section className="flex flex-col">

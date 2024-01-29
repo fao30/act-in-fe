@@ -1,7 +1,7 @@
-import { clsx, type ClassValue } from "clsx";
-import { type ReadonlyURLSearchParams } from "next/navigation";
+import { type ClassValue, clsx } from "clsx";
+import type { ReadonlyURLSearchParams } from "next/navigation";
 import { twMerge } from "tailwind-merge";
-import { QUESTIONS, SKILLS, type Answer } from "./constants";
+import { type Answer, QUESTIONS, SKILLS } from "./constants";
 
 export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
@@ -36,10 +36,10 @@ export const calculateCounts = ({ answers, skills }: { answers: string[]; skills
 
   const countAnswer = answers.reduce(
     (questionCounts, selectedAnswer) => {
-      QUESTIONS.forEach((question) => {
+      for (const question of QUESTIONS) {
         const matchingAnswer = question.answers.find((answer) => answer.label === selectedAnswer);
         if (matchingAnswer) questionCounts[matchingAnswer.value] += 1;
-      });
+      }
       return questionCounts;
     },
     { ...initialCounts },
@@ -56,15 +56,9 @@ export const calculateCounts = ({ answers, skills }: { answers: string[]; skills
 };
 
 export const getDominantResult = (counts: Record<Answer, number>): "BA" | "M" => {
-  if (counts.BA > counts.M) {
-    return "BA";
-  } else if (counts.M > counts.BA) {
-    return "M";
-  } else {
-    // If counts are equal, you can decide what to return or handle it accordingly
-    // For simplicity, I'll return "BA" in this case
-    return "BA";
-  }
+  if (counts.BA > counts.M) return "BA";
+  if (counts.M > counts.BA) return "M";
+  return "BA";
 };
 
 const timestampInfo = `${new Date().toLocaleTimeString(undefined, {

@@ -1,7 +1,7 @@
-import logo from "#/assets/logo.svg";
-import { type StaticImport } from "next/dist/shared/lib/get-img-props";
+import type { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import Link from "next/link";
+import logo from "#/assets/logo.svg";
 
 export default function Home() {
   return (

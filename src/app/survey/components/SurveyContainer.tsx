@@ -1,6 +1,6 @@
 "use client";
 
-import { QUESTIONS, RESULT_REDIRECT, SKILLS, type Answer } from "@/libs/constants";
+import { type Answer, QUESTIONS, RESULT_REDIRECT, SKILLS } from "@/libs/constants";
 import { calculateCounts, cn, getDominantResult } from "@/libs/functions";
 import { useMultiStepForm } from "@/libs/hooks/useMultiStepForm";
 import { useToast } from "@chakra-ui/react";
@@ -15,7 +15,7 @@ export default function SurveyPage() {
   const [answers, setAnswers] = useLocalStorage<string[]>("answers", []);
   const [skills, setSkills] = useLocalStorage<string[]>("skills", []);
   const [isLastIndex, setIsLastIndex] = useLocalStorage("isLastIndex", false);
-  const [result, setResult] = useLocalStorage<Record<Answer, number> | null>("result", null);
+  const [_result, setResult] = useLocalStorage<Record<Answer, number> | null>("result", null);
 
   const { currentStepIndex, step, isFirstStep, isLastStep, handleNext } = useMultiStepForm(
     QUESTIONS.map((question) => {
@@ -56,14 +56,14 @@ export default function SurveyPage() {
             <h6>
               {isLastStep
                 ? "Выбери все навыки, которыми ты владеешь. Не скромничай и смело выбирай свои сильные стороны!"
-                : QUESTIONS.at(currentStepIndex)!.title}
+                : QUESTIONS.at(currentStepIndex)?.title}
             </h6>
           </section>
           <section className="w-fit lg:w-full lg:pl-10 lg:pr-16 lg:py-10 p-6 bg-wild rounded-full grid lg:grid-cols-6 items-end">
             <h6 className="text-black font-bold">{isLastIndex ? "Почти готово!" : `${currentStepIndex + 1} / ${QUESTIONS.length}`}</h6>
             <section className="lg:col-span-5 relative lg:flex hidden">
               <section
-                style={{ width: isFirstStep ? "2%" : isLastIndex ? "100%" : (100 / QUESTIONS.length) * currentStepIndex + "%" }}
+                style={{ width: isFirstStep ? "2%" : isLastIndex ? "100%" : `${(100 / QUESTIONS.length) * currentStepIndex}%` }}
                 className="animate absolute -translate-y-12 centered-left flex justify-end"
               >
                 <Icon icon="fa6-solid:person" width={30} />
@@ -88,7 +88,7 @@ export default function SurveyPage() {
                       }}
                       type="button"
                       className={cn(
-                        "w-fit font-bold text-white bg-tango rounded-full text-center px-4 lg:px-8 py-2 border-3 border-barley lg:text-base text-sm",
+                        "w-fit font-bold text-white bg-tango rounded-full text-center px-4 py-2 border-3 border-barley lg:text-base text-sm text-balance",
                         {
                           "border-sand shadow-lg": active,
                         },

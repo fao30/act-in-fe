@@ -1,17 +1,17 @@
 "use client";
 
-import { RESULT_REDIRECT, type Answer, type Result } from "@/libs/constants";
+import { type Answer, RESULT_REDIRECT, type Result } from "@/libs/constants";
 import { getDominantResult } from "@/libs/functions";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import experiencedSalary from "#/assets/icons/experiencedSalary.png";
-import monthlySalary from "#/assets/icons/monthlySalary.png";
-import strongSide from "#/assets/icons/strongSide.png";
-import logo from "#/assets/logo.svg";
-import { type StaticImport } from "next/dist/shared/lib/get-img-props";
+import type { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
+import experiencedSalary from "#/assets/icons/experiencedSalary.png";
+import monthlySalary from "#/assets/icons/monthlySalary.png";
+import strongSide from "#/assets/icons/strongSide.png";
+import logo from "#/assets/logo.svg";
 
 type Props = { data: Result };
 export default function ResultBody({ data }: Props) {
