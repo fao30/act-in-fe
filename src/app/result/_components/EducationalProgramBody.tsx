@@ -1,12 +1,12 @@
-import { type EducationalProgram } from "@/libs/constants";
+import type { EducationalProgram } from "@/libs/constants";
+import type { StaticImport } from "next/dist/shared/lib/get-img-props";
+import Image from "next/image";
+import Link from "next/link";
+import { Fragment } from "react";
 import check from "#/assets/check.png";
 import university from "#/assets/kfu.png";
 import logo from "#/assets/logo.svg";
 import sberbank from "#/assets/sberbank.png";
-import { type StaticImport } from "next/dist/shared/lib/get-img-props";
-import Image from "next/image";
-import Link from "next/link";
-import { Fragment } from "react";
 
 type Props = { data: EducationalProgram };
 
