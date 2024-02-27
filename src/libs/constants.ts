@@ -107,7 +107,7 @@ export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
 
 export const RESULTS: Record<Answer, Result> = {
   M: {
-    educationalProgramHref: "/result/business-analytics/educational-program",
+    educationalProgramHref: "/result/marketing/educational-program",
     title: "Маркетинг",
     description:
       "Какие крупные и известные компании ты знаешь? Удивительно, но многие из них стали таковыми благодаря грамотному маркетингу! Ты можешь узнать как понимать клиентов, как с ними правильно взаимодействовать и строить маркетинговые стратегии на образовательной программе, которую мы подобрали специально для тебя",
@@ -126,7 +126,7 @@ export const RESULTS: Record<Answer, Result> = {
     ],
   },
   BA: {
-    educationalProgramHref: "/result/marketing/educational-program",
+    educationalProgramHref: "/result/business-analytics/educational-program",
     title: "Бизнес-аналитика",
     description:
       "Какие крупные и известные компании ты знаешь? Ни одна крупная компания не обходится без бизнес-аналитика в своем штате. Бизнес-аналитики нужны практически в любой отрасли: банки, фармацевтика, IT, энергетика. Задача бизнес-аналитика — изучить, как и чем живет компания, и посоветовать, как решить ее проблемы",

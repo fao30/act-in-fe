@@ -17,10 +17,10 @@ export default function SurveyPage() {
   const [isLastIndex, setIsLastIndex] = useLocalStorage("isLastIndex", false);
   const [_result, setResult] = useLocalStorage<Record<Answer, number> | null>("result", null);
 
-  const { currentStepIndex, step, isFirstStep, isLastStep, handleNext } = useMultiStepForm(
+  const { currentStepIndex, step, isFirstStep, isLastStep, handleNext, setCurrentStepIndex } = useMultiStepForm(
     QUESTIONS.map((question) => {
       return (
-        <section key={question.question} className="flex flex-col h-full gap-10">
+        <section key={question.question} className="flex flex-col h-full w-full gap-10">
           <h6>{question.question}</h6>
           <section className="grid lg:grid-cols-4 gap-6">
             {question.answers.map((e) => (
@@ -47,6 +47,8 @@ export default function SurveyPage() {
     }),
   );
 
+  console.log(answers);
+
   return (
     <Fragment>
       <article className="bg-barley p-shorter flex flex-col gap-4 lg:gap-6">
@@ -72,6 +74,26 @@ export default function SurveyPage() {
               <div className="h-2 w-full bg-tango" />
             </section>
           </section>
+          {answers.length ? (
+            <section className="flex justify-end w-full">
+              <button
+                type="button"
+                className="text-lg font-semibold flex gap-2 items-center"
+                onClick={() => {
+                  if (currentStepIndex) {
+                    setCurrentStepIndex(currentStepIndex - 1);
+                    const updatedAnswers = structuredClone(answers);
+                    updatedAnswers.pop();
+                    setAnswers(updatedAnswers);
+                  }
+                }}
+              >
+                <Icon icon="mdi:arrow-down" rotate={1} width={25} />
+                Назад
+              </button>
+            </section>
+          ) : null}
+
           {isLastIndex ? (
             <section className="flex flex-col gap-12 items-center justify-center">
               <section className="flex justify-center gap-2 flex-wrap">

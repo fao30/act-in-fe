@@ -1,5 +1,5 @@
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { type RouterOutputs } from "@/trpc/shared";
+import type { RouterOutputs } from "@/trpc/shared";
 import { z } from "zod";
 import { getData } from "./shared";
 
@@ -43,6 +43,7 @@ export const vacancyRouter = createTRPCRouter({
       for (const item of data.items) {
         const dataById = (await getData({ endpoint: `/vacancies/${item.id}` })) as { key_skills: { name: string }[] };
         item.key_skills = dataById.key_skills.slice(0, 5);
+        // biome-ignore lint/complexity/noForEach: <explanation>
         dataById.key_skills.forEach((e) => topSkillsSet.add(e.name));
       }
 
