@@ -13,7 +13,7 @@ export default function Footer() {
         <section className="bg-white rounded-md size-6 relative">
           <Icon icon={ICONS.headset} className="text-tango absolute centered" width={18} />
         </section>
-        <Link href="/" className="hover:underline">
+        <Link href="https://t.me/KIMAsupport" target="_blank" className="hover:underline">
           Техническая поддержка
         </Link>
       </section>
@@ -21,7 +21,7 @@ export default function Footer() {
         <section className="bg-white rounded-md size-6 relative">
           <Icon icon={ICONS.call} className="text-tango absolute centered" width={18} />
         </section>
-        <Link href="tel:+79625564290" className="hover:underline">
+        <Link href="tel:+79625564290" target="_blank" className="hover:underline">
           +7 (962) 556 - 42 - 90
         </Link>
       </section>

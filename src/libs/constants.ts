@@ -56,8 +56,7 @@ export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
       "MBE Business Intelligence в Берлинском университете им. Штайнбайса.",
     ],
     educationalCreditTitle: "Образовательный кредит от Сбера под 3%",
-    educationalCreditWebsite:
-      "https://www.sberbank.com/ru/person/credits/money/credit_na_obrazovanie_a?utm_source=postupi_online_specpro&utm_medium=sberkredit&utm_campaign=specpro",
+    educationalCreditWebsite: "https://www.sberbank.com/ru/person/credits/money/credit_na_obrazovanie",
     programWebsite:
       "https://kpfu.ru/institutes/institut-upravleniya-ekonomiki-i-finansov/struktura/otdelenie-menedzhmenta/kafedra-innovacij-i-investicij",
     presentationWebsite: "https://kpfu.ru/portal/docs/F_57925047/BA_bak_16.02.2022._final_.pdf",
@@ -89,8 +88,7 @@ export const RESULT_EDUCATIONAL_PROGRAMS: Record<Answer, EducationalProgram> = {
     programWebsite:
       "https://kpfu.ru/institutes/institut-upravleniya-ekonomiki-i-finansov/struktura/otdelenie-menedzhmenta/kafedra-marketinga",
     presentationWebsite: "https://kpfu.ru/portal/docs/F_1915942414/Marketing.pdf",
-    educationalCreditWebsite:
-      "https://www.sberbank.com/ru/person/credits/money/credit_na_obrazovanie_a?utm_source=postupi_online_specpro&utm_medium=sberkredit&utm_campaign=specpro",
+    educationalCreditWebsite: "https://www.sberbank.com/ru/person/credits/money/credit_na_obrazovanie",
     educationalCreditTitle: "Образовательный кредит от Сбера под 3%",
     information: {
       common: ["Государственный ВУЗ", "Есть общежитие", "Бюджетные места"],
