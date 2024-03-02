@@ -96,7 +96,7 @@ export default function EducationalProgramBody({ data }: Props) {
           <section className="flex gap-4">
             <Image src={sberbank as StaticImport} alt={`ACT IN - ${data.educationalCreditTitle}`} className="size-12" />
             <section className="flex flex-col">
-              <Link href={data.educationalCreditWebsite}>
+              <Link href={data.educationalCreditWebsite} target="_blank">
                 <h6 className="text-seagreen hover:underline">{data.educationalCreditTitle}</h6>
               </Link>
               <p className="text-[#706969]">Перейди по ссылке, чтобы посмотреть условия</p>
