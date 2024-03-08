@@ -47,8 +47,6 @@ export default function SurveyPage() {
     }),
   );
 
-  console.log(answers);
-
   return (
     <Fragment>
       <article className="bg-barley p-shorter flex flex-col gap-4 lg:gap-6">
@@ -81,7 +79,15 @@ export default function SurveyPage() {
                 className="text-lg font-semibold flex gap-2 items-center"
                 onClick={() => {
                   if (currentStepIndex) {
-                    setCurrentStepIndex(currentStepIndex - 1);
+                    if (isLastIndex) {
+                      setSkills([]);
+                      setIsLastIndex(false);
+                    }
+
+                    if (isLastIndex) {
+                      setCurrentStepIndex(8);
+                    } else setCurrentStepIndex(currentStepIndex - 1);
+
                     const updatedAnswers = structuredClone(answers);
                     updatedAnswers.pop();
                     setAnswers(updatedAnswers);
